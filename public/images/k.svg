@@ -1,0 +1,27 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+  </defs>
+  
+  <rect width="1920" height="1080" fill="url(#heroGrad)"/>
+  <rect width="1920" height="1080" fill="url(#dots)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="1700" cy="300" r="200" fill="rgba(255,255,255,0.03)"/>
+  <circle cx="1500" cy="800" r="180" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="400" cy="900" r="120" fill="rgba(255,255,255,0.04)"/>
+  
+  <!-- Geometric shapes -->
+  <path d="M100 100 L200 150 L150 250 Z" fill="rgba(255,255,255,0.03)"/>
+  <path d="M1800 100 L1850 200 L1750 250 Z" fill="rgba(255,255,255,0.04)"/>
+  
+  <!-- Wave pattern at bottom -->
+  <path d="M0 900 Q480 850 960 900 T1920 900 L1920 1080 L0 1080 Z" fill="rgba(0,0,0,0.1)"/>
+</svg>
