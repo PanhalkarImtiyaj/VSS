@@ -29,18 +29,7 @@ const Slider = () => {
         { value: '4.8★', label: 'Average Rating' }
       ]
     },
-    {
-      image: '/images/silder/android-development.png',
-      title: 'Android App Development',
-      subtitle: 'Native • Kotlin • Java • Material Design',
-      description: 'Create powerful native Android applications with cutting-edge technology. We develop high-performance Android apps using Kotlin, Java, and modern Android frameworks for optimal user experience.',
-      features: ['Native Android', 'Kotlin Development', 'Material Design', 'Play Store Ready'],
-      stats: [
-        { value: '150+', label: 'Android Apps' },
-        { value: '2M+', label: 'Downloads' },
-        { value: '4.7★', label: 'Play Store Rating' }
-      ]
-    },
+
     {
       image: '/images/silder/digital-services.png',
       title: 'Complete Digital Services',
@@ -201,13 +190,13 @@ const Slider = () => {
         }
 
         .feature-tag {
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           color: white;
           padding: 8px 16px;
           border-radius: 25px;
           font-size: 0.9rem;
           font-weight: 500;
-          box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+          box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
         }
 
         .slider-stats {
@@ -323,7 +312,7 @@ const Slider = () => {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(0, 188, 212, 0.8);
+          background: rgba(0, 51, 102, 0.8);
           color: white;
           border: none;
           font-size: 2rem;
@@ -335,7 +324,7 @@ const Slider = () => {
         }
 
         .slider-btn:hover {
-          background: rgba(0, 188, 212, 1);
+          background: rgba(0, 51, 102, 1);
           transform: translateY(-50%) scale(1.1);
         }
 
@@ -388,12 +377,12 @@ const Slider = () => {
           bottom: 20px;
           width: 60px;
           height: 60px;
-          background: #00BCD4;
+          background: #003366;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 20px rgba(0, 188, 212, 0.4);
+          box-shadow: 0 4px 20px rgba(0, 51, 102, 0.4);
           cursor: pointer;
           transition: all 0.3s ease;
           z-index: 1000;
@@ -403,8 +392,8 @@ const Slider = () => {
 
         .back-to-top:hover {
           transform: scale(1.1);
-          box-shadow: 0 6px 25px rgba(0, 188, 212, 0.6);
-          background: #5a67d8;
+          box-shadow: 0 6px 25px rgba(0, 51, 102, 0.6);
+          background: #004d7a;
         }
 
         .back-to-top-icon {
@@ -419,6 +408,10 @@ const Slider = () => {
             min-height: 100vh;
             padding: 40px 20px;
             overflow: visible;
+          }
+
+          .slider-btn {
+            display: none;
           }
 
           .slider-content {
@@ -525,6 +518,10 @@ const Slider = () => {
             width: 20px;
             height: 20px;
           }
+
+          .slider-btn {
+            display: none;
+          }
         }
       `}</style>
 
@@ -579,15 +576,7 @@ const Slider = () => {
           &#10095;
         </button>
 
-        <div className="slide-indicators">
-          {slides.map((_, index) => (
-            <div
-              key={index}
-              className={`indicator ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-            />
-          ))}
-        </div>
+
 
         <button
           onClick={scrollToTop}

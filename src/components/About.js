@@ -80,7 +80,7 @@ function About() {
         .stat-number {
           font-size: 3.5rem;
           font-weight: 900;
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -115,7 +115,7 @@ function About() {
           transform: translateX(-50%);
           width: 100px;
           height: 4px;
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           border-radius: 2px;
         }
         
@@ -218,7 +218,7 @@ function About() {
           left: 0;
           width: 100%;
           height: 5px;
-          background: linear-gradient(90deg, #00BCD4, #003366);
+          background: linear-gradient(90deg, #003366, #00BCD4);
         }
         
         .mv-card h3 {
@@ -257,7 +257,7 @@ function About() {
           top: 7px;
           width: 20px;
           height: 20px;
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -275,7 +275,7 @@ function About() {
         }
         
         .services-showcase {
-          background: linear-gradient(135deg, #00BCD4 0%, #003366 100%);
+          background: linear-gradient(135deg, #003366 0%, #00BCD4 100%);
           padding: 5rem 3rem;
           border-radius: 24px;
           margin-bottom: 5rem;
@@ -357,7 +357,7 @@ function About() {
           width: 80px;
           height: 80px;
           margin: 0 auto 1.5rem;
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -411,7 +411,7 @@ function About() {
           width: 70px;
           height: 70px;
           margin: 0 auto 1.5rem;
-          background: linear-gradient(135deg, #00BCD4, #003366);
+          background: linear-gradient(135deg, #003366, #00BCD4);
           border-radius: 16px;
           display: flex;
           align-items: center;

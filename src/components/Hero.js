@@ -6,8 +6,6 @@ function Hero() {
       <style>{`
         .hero {
           padding-top: 115px;
-          overflow-x: hidden;
-          max-width: 100%;
         }
         
         @media (max-width: 768px) {
