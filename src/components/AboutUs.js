@@ -207,7 +207,68 @@ const AboutUs = () => {
           color: #666;
           line-height: 1.8;
           max-width: 800px;
-          margin: 0 auto;
+          margin: 0 auto 50px;
+        }
+
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 40px;
+          margin-top: 50px;
+        }
+
+        .team-member {
+          background: white;
+          padding: 40px 30px;
+          border-radius: 15px;
+          text-align: center;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-avatar {
+          width: 100px;
+          height: 100px;
+          margin: 0 auto 25px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .avatar-placeholder {
+          font-size: 2.5rem;
+          font-weight: bold;
+          color: white;
+        }
+
+        .member-name {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #2c3e50;
+          margin-bottom: 10px;
+        }
+
+        .member-role {
+          font-size: 1.1rem;
+          color: #667eea;
+          font-weight: 600;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .member-description {
+          font-size: 1rem;
+          color: #666;
+          line-height: 1.6;
         }
 
         .cta-section {
@@ -284,6 +345,15 @@ const AboutUs = () => {
 
           .cta-title {
             font-size: 2rem;
+          }
+
+          .team-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .team-member {
+            padding: 30px 20px;
           }
         }
       `}</style>
@@ -402,14 +472,57 @@ const AboutUs = () => {
         {/* Team Section */}
         <section className="team-section">
           <div className="team-container">
-            <h2 className="section-title">Our Team</h2>
+            <h2 className="section-title">Meet Our Expert Team</h2>
             <div className="team-text">
               <p>
-                Our diverse team of talented professionals brings together expertise in software development, UI/UX design, project management, and digital strategy. We are passionate about technology and committed to delivering exceptional results.
+                Our diverse team of talented professionals brings together expertise in software development, UI/UX design, data engineering, and digital strategy. We are passionate about technology and committed to delivering exceptional results.
               </p>
-              <p>
-                Each team member contributes unique skills and perspectives, creating a collaborative environment where innovation thrives. We invest in continuous learning and stay updated with the latest industry trends and technologies.
-              </p>
+            </div>
+            
+            <div className="team-grid">
+              <div className="team-member">
+                <div className="member-avatar">
+                  <div className="avatar-placeholder">K</div>
+                </div>
+                <h3 className="member-name">Karuna</h3>
+                <p className="member-role">Full Stack Developer</p>
+                <p className="member-description">
+                  Expert in both frontend and backend development with extensive experience in modern web technologies, frameworks, and database management.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <div className="member-avatar">
+                  <div className="avatar-placeholder">M</div>
+                </div>
+                <h3 className="member-name">Mubina</h3>
+                <p className="member-role">Full Stack Developer</p>
+                <p className="member-description">
+                  Specialized in creating scalable web applications with expertise in API development, cloud services, and modern development practices.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <div className="member-avatar">
+                  <div className="avatar-placeholder">M</div>
+                </div>
+                <h3 className="member-name">Mansi</h3>
+                <p className="member-role">Graphic Designer</p>
+                <p className="member-description">
+                  Creative designer focused on visual identity, UI/UX design, branding, and creating compelling graphics for digital platforms.
+                </p>
+              </div>
+
+              <div className="team-member">
+                <div className="member-avatar">
+                  <div className="avatar-placeholder">P</div>
+                </div>
+                <h3 className="member-name">Priya</h3>
+                <p className="member-role">Data Engineer</p>
+                <p className="member-description">
+                  Specialist in data architecture, analytics, machine learning, and building robust data pipelines for business intelligence.
+                </p>
+              </div>
             </div>
           </div>
         </section>

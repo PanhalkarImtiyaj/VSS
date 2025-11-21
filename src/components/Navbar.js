@@ -1,22 +1,47 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Navbar() {
+  const navigate = useNavigate()
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const handleContactClick = (e) => {
+    e.preventDefault()
+    setMobileMenuOpen(false)
+
+    // Check if we're already on home page
+    if (window.location.pathname === '/') {
+      // Just scroll to contact section
+      const contactSection = document.getElementById('contact')
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // Navigate to home page first, then scroll
+      navigate('/')
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact')
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }
 
   const menuItems = [
     { id: 'home', label: 'Home', icon: 'bx-home-alt', hasDropdown: false },
     { id: 'about', label: 'About', icon: 'bx-info-circle', hasDropdown: false },
-    { 
-      id: 'services', 
-      label: 'Services', 
+    {
+      id: 'services',
+      label: 'Services',
       icon: 'bx-briefcase',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Web Development', desc: 'Custom web solutions', icon: 'bx-code-alt' },
-        { name: 'Mobile Apps', desc: 'iOS & Android apps', icon: 'bx-mobile' },
-        { name: 'Cloud Services', desc: 'Scalable infrastructure', icon: 'bx-cloud' },
-        { name: 'Consulting', desc: 'Expert guidance', icon: 'bx-user-voice' }
+        { name: 'Web Development', desc: 'Custom web solutions', icon: 'bx-code-alt', path: '/services/web-development' },
+        { name: 'Mobile Apps', desc: 'iOS & Android apps', icon: 'bx-mobile', path: '/services/mobile-apps' },
+        { name: 'Cloud Services', desc: 'Scalable infrastructure', icon: 'bx-cloud', path: '/services/cloud-services' },
+        { name: 'Consulting', desc: 'Expert guidance', icon: 'bx-user-voice', path: '/services/consulting' }
       ]
     },
     { id: 'career', label: 'Career', icon: 'bx-briefcase-alt-2', hasDropdown: false }
@@ -430,13 +455,13 @@ function Navbar() {
           }
           
           .navbar {
-            padding: 0.8rem 0;
-            min-height: 80px;
+            padding: 0.6rem 0;
+            min-height: 60px;
             top: 0;
           }
           
           .navbar-container {
-            padding: 0 1.5rem;
+            padding: 0 1rem;
             justify-content: space-between;
           }
           
@@ -446,32 +471,32 @@ function Navbar() {
           }
           
           .navbar-logo img {
-            height: 65px;
+            height: 45px;
           }
           
           .hamburger {
             display: flex;
-            padding: 1rem;
+            padding: 0.6rem;
             order: 3;
           }
           
           .hamburger-line {
-            width: 35px;
-            height: 4px;
+            width: 28px;
+            height: 3px;
           }
           
           .navbar-center {
             position: fixed;
-            top: 80px;
+            top: 60px;
             left: 0;
             right: 0;
             background: white;
             flex-direction: column;
-            padding: 2.5rem 1.5rem 1rem;
+            padding: 1rem 1rem 0.5rem;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             transform: translateX(-100%);
             transition: transform 0.3s;
-            max-height: calc(100vh - 80px);
+            max-height: calc(100vh - 60px);
             overflow-y: auto;
             margin: 0;
           }
@@ -488,21 +513,21 @@ function Navbar() {
           
           .navbar-item {
             width: 100%;
-            border-bottom: 2px solid #ecf0f1;
+            border-bottom: 1px solid #ecf0f1;
           }
           
           .navbar-link {
-            padding: 1.4rem 1rem;
-            font-size: 1.3rem;
+            padding: 0.9rem 0.8rem;
+            font-size: 1rem;
             width: 100%;
           }
           
           .menu-icon {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
           }
           
           .dropdown-arrow {
-            font-size: 1rem;
+            font-size: 0.85rem;
           }
           
           .dropdown-menu {
@@ -524,19 +549,19 @@ function Navbar() {
           }
           
           .dropdown-item {
-            padding: 1.2rem 2rem;
+            padding: 0.9rem 1.5rem;
           }
           
           .dropdown-item-icon {
-            font-size: 2rem;
+            font-size: 1.4rem;
           }
           
           .dropdown-item-name {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
           }
           
           .dropdown-item-desc {
-            font-size: 1rem;
+            font-size: 0.8rem;
           }
           
           .navbar-right {
@@ -547,21 +572,21 @@ function Navbar() {
           
           .mobile-contact-item {
             display: block;
-            border-top: 4px solid #003366;
+            border-top: 3px solid #003366;
             background: linear-gradient(135deg, #003366 0%, #004d7a 100%);
-            margin-top: 1rem;
+            margin-top: 0.5rem;
           }
           
           .mobile-contact-item .navbar-link {
             color: white;
             font-weight: 700;
-            font-size: 1.5rem;
-            padding: 1.8rem 1rem;
+            font-size: 1.1rem;
+            padding: 1rem 0.8rem;
             background: transparent;
           }
           
           .mobile-contact-item .menu-icon {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
           }
           
           .mobile-contact-item:hover {
@@ -571,49 +596,57 @@ function Navbar() {
           .contact-btn {
             width: 100%;
             justify-content: center;
-            padding: 1.2rem;
-            font-size: 1.15rem;
+            padding: 0.9rem;
+            font-size: 1rem;
           }
           
           .contact-btn i {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
           }
         }
         
         @media (max-width: 480px) {
           .navbar-logo img {
-            height: 55px;
+            height: 40px;
           }
           
           .hamburger {
-            padding: 1.2rem;
+            padding: 0.5rem;
           }
           
           .hamburger-line {
-            width: 38px;
-            height: 4px;
+            width: 26px;
+            height: 3px;
           }
           
           .navbar-link {
-            font-size: 2.1rem;
-            padding: 1.2rem 0.8rem;
+            font-size: 0.95rem;
+            padding: 0.85rem 0.7rem;
           }
           
           .dropdown-item {
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
+          }
+          
+          .dropdown-item-name {
+            font-size: 0.9rem;
+          }
+          
+          .dropdown-item-desc {
+            font-size: 0.75rem;
           }
           
           .mobile-contact-item .navbar-link {
-            font-size: 2.2rem;
-            padding: 1.8rem 1rem;
+            font-size: 1.05rem;
+            padding: 0.9rem 0.7rem;
           }
           
           .mobile-contact-item .menu-icon {
-            font-size: 2.3rem;
+            font-size: 1.25rem;
           }
         }
       `}</style>
-      
+
       <div className="top-bar">
         <div className="top-bar-container">
           <div className="top-bar-left">
@@ -645,51 +678,62 @@ function Navbar() {
           </div>
         </div>
       </div>
-      
+
       <nav className="navbar">
         <div className="navbar-container">
-          <a href="#home" className="navbar-logo">
+          <Link to="/" className="navbar-logo">
             <img src="/images/vss-logo.png" alt="VSS Logo" />
-          </a>
-          
+          </Link>
+
           <div className={`hamburger ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
           </div>
-          
+
           <div className={`navbar-center ${mobileMenuOpen ? 'mobile-open' : ''}`}>
             <ul className="navbar-menu">
               {menuItems.map((item) => (
-                <li 
-                  key={item.id} 
+                <li
+                  key={item.id}
                   className={`navbar-item ${openDropdown === item.id ? 'dropdown-open' : ''}`}
                   onMouseEnter={() => window.innerWidth > 768 && item.hasDropdown && setOpenDropdown(item.id)}
                   onMouseLeave={() => window.innerWidth > 768 && setOpenDropdown(null)}
                 >
-                  <a 
-                    href={`#${item.id}`} 
-                    className="navbar-link"
-                    onClick={(e) => {
-                      if (item.hasDropdown && window.innerWidth <= 768) {
-                        e.preventDefault()
-                        setOpenDropdown(openDropdown === item.id ? null : item.id)
-                      } else {
-                        setMobileMenuOpen(false)
-                      }
-                    }}
-                  >
-                    <i className={`bx ${item.icon} menu-icon`}></i>
-                    {item.label}
-                    {item.hasDropdown && <i className='bx bx-chevron-down dropdown-arrow'></i>}
-                  </a>
-                  
+                  {item.id === 'career' ? (
+                    <Link
+                      to="/career"
+                      className="navbar-link"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <i className={`bx ${item.icon} menu-icon`}></i>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.id === 'home' ? '/' : `/#${item.id}`}
+                      className="navbar-link"
+                      onClick={(e) => {
+                        if (item.hasDropdown && window.innerWidth <= 768) {
+                          e.preventDefault()
+                          setOpenDropdown(openDropdown === item.id ? null : item.id)
+                        } else {
+                          setMobileMenuOpen(false)
+                        }
+                      }}
+                    >
+                      <i className={`bx ${item.icon} menu-icon`}></i>
+                      {item.label}
+                      {item.hasDropdown && <i className='bx bx-chevron-down dropdown-arrow'></i>}
+                    </a>
+                  )}
+
                   {item.hasDropdown && (
                     <div className="dropdown-menu">
                       {item.dropdownItems.map((dropItem, index) => (
-                        <a 
-                          key={index} 
-                          href="#" 
+                        <Link
+                          key={index}
+                          to={dropItem.path}
                           className="dropdown-item"
                           onClick={() => setMobileMenuOpen(false)}
                         >
@@ -698,18 +742,18 @@ function Navbar() {
                             <div className="dropdown-item-name">{dropItem.name}</div>
                             <div className="dropdown-item-desc">{dropItem.desc}</div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
                 </li>
               ))}
-              
+
               <li className="navbar-item mobile-contact-item">
-                <a 
-                  href="#contact" 
+                <a
+                  href="#contact"
                   className="navbar-link"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={handleContactClick}
                 >
                   <i className='bx bx-envelope menu-icon'></i>
                   Contact Us
@@ -717,11 +761,12 @@ function Navbar() {
               </li>
             </ul>
           </div>
-          
+
           <div className="navbar-right">
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="contact-btn"
+              onClick={handleContactClick}
             >
               <i className='bx bx-envelope'></i>
               Contact Us

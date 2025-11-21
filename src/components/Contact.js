@@ -132,21 +132,76 @@ function Contact() {
           box-shadow: 0 6px 16px rgba(26, 115, 232, 0.4);
         }
         
-        @media (max-width: 768px) {
-          .contact-content {
-            grid-template-columns: 1fr;
+        /* Responsive */
+        @media (max-width: 992px) {
+          .contact {
+            padding: 65px 0 60px;
+            max-width: 100%;
+            overflow-x: hidden;
+          }
+          
+          .contact-container {
+            padding: 0 1rem;
+            max-width: 100%;
+          }
+          
+          .contact-header {
+            margin-bottom: 2rem;
+            padding: 0 1rem;
           }
           
           .contact-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
+          }
+          
+          .contact-subtitle {
+            font-size: 1.1rem;
+          }
+          
+          .contact-content {
+            grid-template-columns: 1fr !important;
+            padding: 2rem 1.5rem;
+            gap: 3rem;
+            max-width: 100%;
+          }
+          
+          .contact-info {
+            gap: 1.5rem;
+          }
+          
+          .contact-item {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+          }
+          
+          .contact-icon {
+            font-size: 1.8rem;
+            padding: 0.8rem;
+          }
+          
+          .contact-form {
+            gap: 1.2rem;
+          }
+          
+          .form-input,
+          .form-textarea {
+            padding: 0.8rem;
+            font-size: 1rem;
+          }
+          
+          .form-submit {
+            padding: 0.9rem;
+            font-size: 1rem;
           }
         }
       `}</style>
-      
+
       <section id="contact" className="contact">
         <div className="contact-container">
           <div className="contact-header">
-            <h2 className="contact-title">Get In Touch</h2>
+            <h2 className="contact-title">Contact Us</h2>
             <p className="contact-subtitle">We'd love to hear from you. Let's talk about your project.</p>
           </div>
           <div className="contact-content">
@@ -157,7 +212,7 @@ function Contact() {
                 </div>
                 <div className="contact-item-content">
                   <h4>Email</h4>
-                  <p>sssoftwaresolutions@gmail.com</p>
+                  <p>VssSoftwaresolutions@gmail.com</p>
                 </div>
               </div>
               <div className="contact-item">
@@ -175,7 +230,7 @@ function Contact() {
                 </div>
                 <div className="contact-item-content">
                   <h4>Office</h4>
-                  <p>123 Business Street<br/>San Francisco, CA 94102</p>
+                  <p>Peth Vadgaon<br />Kolhapur, Maharashtra 416112</p>
                 </div>
               </div>
             </div>

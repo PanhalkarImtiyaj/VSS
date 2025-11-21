@@ -1,227 +1,363 @@
 function Pricing() {
-  const plans = [
+  const features = [
     {
-      name: 'Starter',
-      price: '$29',
-      period: '/month',
-      description: 'Perfect for small teams getting started',
-      features: ['Up to 10 users', '5GB storage', 'Basic support', 'Core features'],
-      popular: false
+      icon: 'bx-rocket',
+      title: 'Fast Delivery',
+      description: 'Quick turnaround time without compromising on quality. We deliver projects on schedule.',
+      color: '#FF6B6B'
     },
     {
-      name: 'Professional',
-      price: '$99',
-      period: '/month',
-      description: 'Best for growing businesses',
-      features: ['Up to 50 users', '50GB storage', 'Priority support', 'Advanced features', 'API access'],
-      popular: true
+      icon: 'bx-shield-alt-2',
+      title: 'Secure & Reliable',
+      description: 'Enterprise-grade security and 99.9% uptime guarantee for all our solutions.',
+      color: '#4ECDC4'
     },
     {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: '',
-      description: 'For large organizations',
-      features: ['Unlimited users', 'Unlimited storage', '24/7 dedicated support', 'Custom features', 'SLA guarantee'],
-      popular: false
+      icon: 'bx-support',
+      title: '24/7 Support',
+      description: 'Round-the-clock technical support to ensure your business runs smoothly.',
+      color: '#FFE66D'
+    },
+    {
+      icon: 'bx-code-alt',
+      title: 'Clean Code',
+      description: 'Well-documented, maintainable code following industry best practices.',
+      color: '#95E1D3'
+    },
+    {
+      icon: 'bx-trending-up',
+      title: 'Scalable Solutions',
+      description: 'Built to grow with your business. Easily scale as your needs expand.',
+      color: '#A8E6CF'
+    },
+    {
+      icon: 'bx-dollar-circle',
+      title: 'Cost Effective',
+      description: 'Competitive pricing with transparent billing. No hidden costs.',
+      color: '#FFD93D'
     }
-  ]
+  ];
+
+  const stats = [
+    { number: '500+', label: 'Projects Completed' },
+    { number: '300+', label: 'Happy Clients' },
+    { number: '50+', label: 'Team Members' },
+    { number: '10+', label: 'Years Experience' }
+  ];
 
   return (
     <>
       <style>{`
-        .pricing {
-          padding: 145px 2rem 100px;
-          background: white;
-        }
-        
-        .pricing-container {
+        .why-choose-us {
+          padding: 100px 0;
+          background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+          overflow-x: hidden;
           max-width: 100%;
-          padding: 0 4rem;
-          margin: 0 auto;
-        }
-        
-        .pricing-header {
-          text-align: center;
-          margin-bottom: 4rem;
-        }
-        
-        .pricing-badge {
-          display: inline-block;
-          background: #e8f0fe;
-          color: #1a73e8;
-          padding: 0.5rem 1.2rem;
-          border-radius: 50px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-        }
-        
-        .pricing-title {
-          font-size: 3rem;
-          font-weight: 800;
-          color: #202124;
-          margin-bottom: 1rem;
-        }
-        
-        .pricing-subtitle {
-          font-size: 1.2rem;
-          color: #5f6368;
-        }
-        
-        .pricing-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 2rem;
-        }
-        
-        .pricing-card {
-          background: white;
-          border: 2px solid #e8eaed;
-          border-radius: 16px;
-          padding: 2.5rem;
-          transition: all 0.3s;
           position: relative;
         }
-        
-        .pricing-card.popular {
-          border-color: #1a73e8;
-          box-shadow: 0 8px 24px rgba(26, 115, 232, 0.2);
-          transform: scale(1.05);
-        }
-        
-        .pricing-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-        }
-        
-        .popular-badge {
+
+        .why-choose-us::before {
+          content: '';
           position: absolute;
-          top: -12px;
-          right: 20px;
-          background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-          color: white;
-          padding: 0.4rem 1rem;
-          border-radius: 50px;
-          font-size: 0.8rem;
-          font-weight: 700;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 300px;
+          background: linear-gradient(135deg, rgba(0,51,102,0.05) 0%, rgba(0,188,212,0.05) 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
         }
-        
-        .plan-name {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: #202124;
-          margin-bottom: 0.5rem;
+
+        .why-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          position: relative;
+          z-index: 1;
         }
-        
-        .plan-description {
-          font-size: 0.95rem;
-          color: #5f6368;
-          margin-bottom: 1.5rem;
-        }
-        
-        .plan-price {
-          font-size: 3rem;
-          font-weight: 800;
-          color: #202124;
-          margin-bottom: 0.5rem;
-        }
-        
-        .plan-period {
-          font-size: 1rem;
-          color: #5f6368;
-        }
-        
-        .plan-features {
-          list-style: none;
-          padding: 0;
-          margin: 2rem 0;
-        }
-        
-        .plan-feature {
-          padding: 0.8rem 0;
-          color: #5f6368;
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-        }
-        
-        .feature-check {
-          color: #1a73e8;
-          font-weight: bold;
-          font-size: 1.2rem;
-        }
-        
-        .plan-btn {
-          width: 100%;
-          padding: 1rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: 700;
+
+        .why-header {
           text-align: center;
-          display: block;
+          margin-bottom: 5rem;
+        }
+
+        .why-header h2 {
+          font-size: 3.5rem;
+          color: #003366;
+          margin-bottom: 1rem;
+          font-weight: 900;
+          background: linear-gradient(135deg, #003366, #00BCD4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .why-header p {
+          font-size: 1.3rem;
+          color: #5f6368;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          margin-bottom: 5rem;
+          background: white;
+          padding: 3rem;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .stat-item {
+          text-align: center;
+          padding: 1.5rem;
+          border-right: 2px solid #e8eaed;
           transition: all 0.3s;
         }
-        
-        .plan-btn-primary {
-          background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-          color: white;
-          box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+
+        .stat-item:last-child {
+          border-right: none;
         }
-        
-        .plan-btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(26, 115, 232, 0.4);
+
+        .stat-item:hover {
+          transform: translateY(-3px);
         }
-        
-        .plan-btn-secondary {
+
+        .stat-number {
+          font-size: 3rem;
+          font-weight: 900;
+          background: linear-gradient(135deg, #003366, #00BCD4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          font-size: 1.1rem;
+          color: #5f6368;
+          font-weight: 600;
+        }
+
+        /* Features Grid */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+        }
+
+        .feature-card {
           background: white;
-          color: #1a73e8;
-          border: 2px solid #1a73e8;
+          padding: 3rem 2rem;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          border-top: 4px solid var(--card-color);
         }
-        
-        .plan-btn-secondary:hover {
-          background: #f8f9fa;
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+          width: 70px;
+          height: 70px;
+          background: rgba(0, 188, 212, 0.1);
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 2rem;
+          transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+          background: rgba(0, 188, 212, 0.15);
+        }
+
+        .feature-icon i {
+          font-size: 2.2rem;
+          color: var(--card-color);
+        }
+
+        .feature-title {
+          font-size: 1.5rem;
+          color: #003366;
+          font-weight: 800;
+          margin-bottom: 1rem;
+        }
+
+        .feature-description {
+          color: #5f6368;
+          line-height: 1.8;
+          font-size: 1.05rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+          margin-top: 5rem;
+          background: linear-gradient(135deg, #003366 0%, #00BCD4 100%);
+          padding: 4rem 3rem;
+          border-radius: 30px;
+          text-align: center;
+          color: white;
+          box-shadow: 0 20px 60px rgba(0,188,212,0.3);
+        }
+
+        .cta-section h3 {
+          font-size: 2.5rem;
+          font-weight: 900;
+          margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0.95;
+        }
+
+        .cta-button {
+          background: white;
+          color: #003366;
+          padding: 1.2rem 3rem;
+          border: none;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+          .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .why-choose-us {
+            padding: 60px 0;
+          }
+
+          .why-header h2 {
+            font-size: 2.5rem;
+          }
+
+          .why-header p {
+            font-size: 1.1rem;
+          }
+
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 2rem;
+          }
+
+          .stat-item {
+            border-right: none;
+            border-bottom: 2px solid #e8eaed;
+            padding: 1rem;
+          }
+
+          .stat-item:last-child {
+            border-bottom: none;
+          }
+
+          .stat-number {
+            font-size: 2.5rem;
+          }
+
+          .features-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+
+          .feature-card {
+            padding: 2rem 1.5rem;
+          }
+
+          .cta-section {
+            padding: 3rem 2rem;
+          }
+
+          .cta-section h3 {
+            font-size: 2rem;
+          }
+
+          .cta-section p {
+            font-size: 1.1rem;
+          }
         }
       `}</style>
-      
-      <section id="pricing" className="pricing">
-        <div className="pricing-container">
-          <div className="pricing-header">
-            <span className="pricing-badge">PRICING</span>
-            <h2 className="pricing-title">Choose Your Plan</h2>
-            <p className="pricing-subtitle">Simple, transparent pricing that grows with you</p>
+
+      <section id="why-choose-us" className="why-choose-us">
+        <div className="why-container">
+          {/* Header */}
+          <div className="why-header">
+            <h2>Why Choose VSS?</h2>
+            <p>We deliver excellence through innovation, expertise, and dedication to your success</p>
           </div>
-          <div className="pricing-grid">
-            {plans.map((plan, index) => (
-              <div key={index} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
-                {plan.popular && <div className="popular-badge">MOST POPULAR</div>}
-                <h3 className="plan-name">{plan.name}</h3>
-                <p className="plan-description">{plan.description}</p>
-                <div>
-                  <span className="plan-price">{plan.price}</span>
-                  <span className="plan-period">{plan.period}</span>
-                </div>
-                <ul className="plan-features">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="plan-feature">
-                      <i className='bx bx-check feature-check'></i>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a 
-                  href="#contact" 
-                  className={`plan-btn ${plan.popular ? 'plan-btn-primary' : 'plan-btn-secondary'}`}
-                >
-                  Get Started
-                </a>
+
+          {/* Stats */}
+          <div className="stats-grid">
+            {stats.map((stat, index) => (
+              <div key={index} className="stat-item">
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Features */}
+          <div className="features-grid">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="feature-card"
+                style={{ '--card-color': feature.color }}
+              >
+                <div className="feature-icon">
+                  <i className={`bx ${feature.icon}`}></i>
+                </div>
+                <h3 className="feature-title">{feature.title}</h3>
+                <p className="feature-description">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="cta-section">
+            <h3>Ready to Start Your Project?</h3>
+            <p>Let's build something amazing together. Contact us today for a free consultation.</p>
+            <button className="cta-button" onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>
+              Get Started Now
+            </button>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Pricing
+export default Pricing;

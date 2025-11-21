@@ -6,7 +6,9 @@ function About() {
           padding: 145px 0 100px;
           background: #ffffff;
           position: relative;
-          overflow: hidden;
+          overflow-x: hidden;
+          max-width: 100%;
+          width: 100%;
         }
         
         .about::before {
@@ -435,60 +437,113 @@ function About() {
           color: #5f6368;
         }
         
-        @media (max-width: 1024px) {
-          .stats-section {
-            grid-template-columns: repeat(2, 1fr);
+        /* Responsive */
+        @media (max-width: 992px) {
+          .about {
+            padding: 65px 0 60px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr);
+          .about-container {
+            padding: 0 1rem;
+            max-width: 100%;
           }
           
-          .features-grid {
-            grid-template-columns: repeat(2, 1fr);
+          .about-hero,
+          .stats-section,
+          .story-section,
+          .mission-vision-section,
+          .services-showcase,
+          .why-choose-section,
+          .values-section {
+            max-width: 100%;
           }
-          
-          .values-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        
-        @media (max-width: 768px) {
+
           .about-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
           }
           
           .about-hero .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            padding: 0 1rem;
           }
           
           .stats-section {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+          }
+          
+          .stat-card {
+            padding: 2rem 1.5rem;
           }
           
           .story-section {
-            grid-template-columns: 1fr;
-            padding: 2rem;
+            grid-template-columns: 1fr !important;
+            padding: 2rem 1.5rem;
+            gap: 2rem;
+            margin-bottom: 3rem;
+          }
+          
+          .story-content h3 {
+            font-size: 2rem;
+          }
+          
+          .story-image img {
+            height: 300px;
           }
           
           .mission-vision-section {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 2rem;
+            margin-bottom: 3rem;
+          }
+          
+          .mv-card {
+            padding: 2rem 1.5rem;
+          }
+          
+          .services-showcase {
+            padding: 3rem 1.5rem;
+            margin-bottom: 3rem;
+          }
+          
+          .services-showcase h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
           }
           
           .services-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
+          }
+          
+          .why-choose-section {
+            margin-bottom: 3rem;
           }
           
           .features-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
+          }
+          
+          .values-section {
+            padding: 3rem 1.5rem;
           }
           
           .values-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
           }
           
           .section-title h2 {
             font-size: 2rem;
+          }
+          
+          .section-title p {
+            font-size: 1rem;
+            padding: 0 1rem;
           }
         }
       `}</style>
